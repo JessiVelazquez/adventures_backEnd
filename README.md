@@ -15,3 +15,5 @@
 NOTES:
 
 - Tested POST and GET ```/user``` routes onn Swagger - created user with a POST and read with a GET request.
+
+- Need to get NPS API routes going
