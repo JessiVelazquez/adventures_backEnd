@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3002;
 //ROUTES=============
 
 app.get('/user', Data.getUserInfo);
+app.get('/activities', Data.getAllActivites);
 app.post('/user', Data.createUser);
 // more go here TODO
 
