@@ -11,15 +11,17 @@ const PORT = process.env.PORT || 3002;
 
 //ROUTES=============
 
+app.get('/user', Data.getUserInfo);
+app.post('/user', Data.createUser);
 // more go here TODO
 
 app.get('/', (request, response) => {
   response.send('Hello World');
 });
 
-app.use('*', (request, response) => {
-  response.status(404).send('These are not the droids you are looking for');
-});
+// app.use('*', (request, response) => {
+//   response.status(404).send('These are not the droids you are looking for');
+// });
 
 //DB CONNECTION===========
 
