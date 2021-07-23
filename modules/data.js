@@ -35,6 +35,19 @@ Data.createUser = async(request, response) => {
   };
 };
 
+Data.getAllActivites = async(request, response) => {
+  const url = `https://developer.nps.gov/api/v1/activities?api_key=${process.env.NPS_API_KEY}`;
+  superagent
+    .get(url)
+    .then(results => {
+      const activities = results.body.data;
+      response.status(200).send(activities);
+    })
+    .catch((err) => {
+      console.log('NPS API Error');
+      response.status(404).send('NPS API Error');
+    });
+};
 
 
 module.exports = Data;
