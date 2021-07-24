@@ -7,11 +7,11 @@ const Data = {};
 
 //======API ROUTES=====================
 
+// -- Here we right the functions for the route function calls on server.js
+
 Data.getUserInfo = async(request, response) => {
   const userEmail = request.query.email;
-  console.log('req object', request.query);
   const user = await userModel.findOne({ email: userEmail });
-  console.log('USER', user);
   if (user === null) {
     response.send('user not in DB');
   } else {
