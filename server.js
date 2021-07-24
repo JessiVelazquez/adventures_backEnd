@@ -15,18 +15,21 @@ const PORT = process.env.PORT || 3002;
 // -- Could be a different one for each http request type for each endpoint
 // -- ON FRONT END - send axios.get/post/put.del requests to these endpoints, passing in the params which will become request.body.email or request.params._whatecer_ | See display.js in genre room front end.
 
-app.get('/user', Data.getUserInfo);
-app.get('/activities', Data.getAllActivites);
-app.post('/user', Data.createUser);
+app.get('/user', Data.getUserInfo); //gets user by passing auth0 email in on front end axios call
+app.post('/user', Data.createUser); //creates user if user not in DB on front end axios call
+app.get('/activities', Data.getAllActivites); //list of activities
+app.get('/parks', Data.getAllParks); //gets all parks - need to build in query params??
+app.get('/parks/:state', Data.getParksByState); //gets parks by stateCode
+app.get('/campgrounds/:state', Data.getCampgroundsByState); //gets campgrounds by stateCode
 // more go here TODO
 
 app.get('/', (request, response) => {
   response.send('Hello World');
 });
 
-// app.use('*', (request, response) => {
-//   response.status(404).send('These are not the droids you are looking for');
-// });
+app.use('*', (request, response) => {
+  response.status(404).send('These are not the droids you are looking for');
+});
 
 //DB CONNECTION===========
 
