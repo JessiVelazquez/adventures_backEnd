@@ -9,7 +9,11 @@ app.use(express.json());
 const Data = require('./modules/data.js');
 const PORT = process.env.PORT || 3002;
 
-//ROUTES=============
+//ROUTES FUNCTION CALLS=============
+
+// -- Here we tell Express what to do with each http request type to each endpoint
+// -- Could be a different one for each http request type for each endpoint
+// -- ON FRONT END - send axios.get/post/put.del requests to these endpoints, passing in the params which will become request.body.email or request.params._whatecer_ | See display.js in genre room front end.
 
 app.get('/user', Data.getUserInfo);
 app.get('/activities', Data.getAllActivites);
