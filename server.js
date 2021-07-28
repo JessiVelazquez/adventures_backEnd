@@ -20,6 +20,7 @@ app.post('/user', Data.createUser); //creates user if user not in DB on front en
 app.get('/activities', Data.getAllActivites); //list of activities
 app.get('/parks', Data.getAllParks); //gets all parks - need to build in query params??
 app.get('/parks/:state', Data.getParksByState); //gets parks by stateCode
+app.get('/parks/:state/:park', Data.getOnePark); //gets one park 
 app.get('/campgrounds/:state', Data.getCampgroundsByState); //gets campgrounds by stateCode
 // more go here TODO
 
