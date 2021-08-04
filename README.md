@@ -2,6 +2,8 @@
 
 Author: Jessi Velazquez
 
+Deployed Link: [https://adventures-backend.herokuapp.com/](https://adventures-backend.herokuapp.com/)
+
 **Description:** This is a National Parks trip planner that uses NPS API for it's data source. A personal project currently in development.
 
 **Need to do:**
