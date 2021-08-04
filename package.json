@@ -11,12 +11,12 @@
     "type": "git",
     "url": "git+https://github.com/JessiVelazquez/adventures_backEnd.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/JessiVelazquez/adventures_backEnd/issues"
   },
-  "homepage": "https://github.com/JessiVelazquez/adventures_backEnd#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "cors": "^2.8.5",

@@ -65,7 +65,6 @@ Data.getAllParks = async(request, response) => {
 };
 
 Data.getOnePark = async(request, response) => {
-  console.log('req params', request.params); // NOT GETTING REQ.PARAMS??
   const stateCode = request.params.state;
   const parkCode = request.params.park;
   const url = `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&parkCode=${parkCode}&api_key=${process.env.NPS_API_KEY}`;
@@ -83,7 +82,6 @@ Data.getOnePark = async(request, response) => {
 
 //-----Why does this return some parks with non-matching stateCode?? - because the stateCode sent as query param is also listed in the "states" field from the API???
 Data.getParksByState = async(request, response) => {
-  console.log('test');
   const maxResults = 100;
   const stateCode = request.params.state;
   const url = `https://developer.nps.gov/api/v1/parks?limit=${maxResults}&stateCode=${stateCode}&api_key=${process.env.NPS_API_KEY}`;
