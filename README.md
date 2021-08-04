@@ -9,3 +9,6 @@ Author: Jessi Velazquez
 1. Using Natl Park Service API - [https://www.nps.gov/subjects/developer/get-started.htm](https://www.nps.gov/subjects/developer/get-started.htm) - Other API's looked at were Trailforks (emailed them for key), and HikerAPI.
 
 4. Mongo Atlas setup
+
+
+...
