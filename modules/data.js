@@ -55,6 +55,7 @@ Data.getAllParks = async(request, response) => {
   superagent
   .get(url)
   .then(results => {
+    // TODO can we write something here to get only the needed data? like park names? to speed up the API response on the front end.
     const parks = results.body.data;
     response.status(200).send(parks);
   })
