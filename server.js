@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 3002;
 app.get('/user', Data.getUserInfo); //gets user by passing auth0 email in on front end axios call
 app.post('/user', Data.createUser); //creates user if user not in DB on front end axios call
 app.get('/activities', Data.getAllActivites); //list of activities
+app.get('/activities/parks/:activity', Data.getParksByActivity); //gets parks that feature a specific activity
 app.get('/parks', Data.getAllParks); //gets all parks - need to build in query params??
 app.get('/parks/:state', Data.getParksByState); //gets parks by stateCode
 app.get('/parks/:state/:park', Data.getOnePark); //gets one park 
