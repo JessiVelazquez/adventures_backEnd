@@ -114,5 +114,21 @@ Data.getCampgroundsByState = async(request, response) => {
   });
 };
 
+Data.getParksByActivity = async(request, response) => {
+  console.log('PARAMS', request.params);
+  const activityID = request.params.activity;
+  const url = `https://developer.nps.gov/api/v1/activities/parks?id=${activityID}&api_key=${process.env.NPS_API_KEY}`;
+  superagent
+  .get(url)
+  .then(results => {
+    const parks = results.body.data;
+    response.status(200).send(parks);
+  })
+  .catch((err) => {
+    console.log('NPS API Error');
+    response.status(404).send('NPS API Error');
+  });
+};
+
 
 module.exports = Data;
