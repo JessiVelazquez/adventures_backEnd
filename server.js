@@ -26,11 +26,11 @@ app.get('/campgrounds/:state', Data.getCampgroundsByState); //gets campgrounds b
 // more go here TODO
 
 app.get('/', (request, response) => {
-  response.send('Hello World');
+  response.send('Connected to Adventures Back End - Node.js Server');
 });
 
 app.use('*', (request, response) => {
-  response.status(404).send('These are not the droids you are looking for');
+  response.status(404).send('404 - Connection Error');
 });
 
 //DB CONNECTION===========
