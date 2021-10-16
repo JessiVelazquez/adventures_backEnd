@@ -7,7 +7,7 @@ const Data = {};
 
 //======API ROUTES=====================
 
-// -- Here we right the functions for the route function calls on server.js
+// -- Here we write the functions for our routes and call them as functions in server.js
 
 Data.getUserInfo = async(request, response) => {
   const userEmail = request.query.email;
@@ -81,7 +81,7 @@ Data.getOnePark = async(request, response) => {
   });
 };
 
-//-----Why does this return some parks with non-matching stateCode?? - because the stateCode sent as query param is also listed in the "states" field from the API???
+//-----NOTE: This will return parks if "states" field includes the stateCode being queried for. This because some parks are in multiple states. Often times these are historic monuments - like WWII memorials, or the Lewis & Clark Trail park which extends from Pittsburgh to Astoria, passing through many states.
 Data.getParksByState = async(request, response) => {
   const maxResults = 100;
   const stateCode = request.params.state;
