@@ -2,7 +2,7 @@
 
 Author: Jessi Velazquez
 
-Deployed Link: [https://adventures-backend.herokuapp.com/](https://adventures-backend.herokuapp.com/)
+Deployed Link: [https://adventures-back-end-jessi.herokuapp.com/](https://adventures-back-end-jessi.herokuapp.com/)
 
 Front End Repo: [https://github.com/JessiVelazquez/adventures](https://github.com/JessiVelazquez/adventures)
 
