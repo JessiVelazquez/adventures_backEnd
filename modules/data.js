@@ -1,13 +1,14 @@
 'use strict'
 
 const userModel = require('../models/user.js');
+const tripModel = require('../models/trip.js');
 const superagent = require('superagent');
 
 const Data = {};
 
 //======API ROUTES=====================
 
-// -- Here we write the functions for our routes and call them as functions in server.js
+// -- These are essentially resource methods. The resources are defned in server.js, and call these methods.
 
 Data.getUserInfo = async(request, response) => {
   const userEmail = request.query.email;
@@ -34,6 +35,24 @@ Data.createUser = async(request, response) => {
     response.status(200).send(`${newUser.name} has been added to the DB`);
   };
 };
+
+Data.createTrip = async(request, response) => {
+  console.log('here');
+  console.log('request body: ', request.body);
+  const user = request.body.user;
+  const park = request.body.park;
+  const trip = {
+    user: user,
+    park: park,
+  };
+  const newTrip = new tripModel(trip);
+  await newTrip.save();
+  response.status(200).send(`New trip to park: ${newTrip.park.name} added for user: ${user.name}`);
+};
+
+Data.getUserTrips = async(request, response) => {
+  console.log('placeholder');
+}
 
 Data.getAllActivites = async(request, response) => {
   const url = `https://developer.nps.gov/api/v1/activities?api_key=${process.env.NPS_API_KEY}`;

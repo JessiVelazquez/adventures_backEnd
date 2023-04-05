@@ -9,21 +9,43 @@ app.use(express.json());
 const Data = require('./modules/data.js');
 const PORT = process.env.PORT || 3002;
 
-//ROUTES FUNCTION CALLS=============
+// RESOURCES =============
 
 // -- Here we tell Express what to do with each http request type to each endpoint
 // -- Could be a different one for each http request type for each endpoint
-// -- ON FRONT END - send axios.get/post/put.del requests to these endpoints, passing in the params which will become request.body.email or request.params._whatecer_ | See display.js in genre room front end.
+// -- ON FRONT END - send axios http requests to these endpoints, passing in the params which will become request.body.email or request.params._whatever_ | See display.js in genre room front end.
 
-app.get('/user', Data.getUserInfo); //gets user by passing auth0 email in on front end axios call
-app.post('/user', Data.createUser); //creates user if user not in DB on front end axios call
-app.get('/activities', Data.getAllActivites); //list of activities
-app.get('/activities/parks/:activity', Data.getParksByActivity); //gets parks that feature a specific activity
-app.get('/parks', Data.getAllParks); //gets all parks - need to build in query params??
-app.get('/parks/:state', Data.getParksByState); //gets parks by stateCode
-app.get('/parks/:state/:park', Data.getOnePark); //gets one park 
-app.get('/campgrounds/:state', Data.getCampgroundsByState); //gets campgrounds by stateCode
-// more go here TODO
+// USERS
+// gets user by passing auth0 email in on API call from front end
+app.get('/user', Data.getUserInfo); 
+// creates user if user not in DB
+app.post('/user', Data.createUser); 
+
+// TRIPS
+// creates a trip
+app.post('/trips', Data.createTrip);
+// gets trips by user
+app.get('/trips/:user', Data.getUserTrips);
+
+// ACTIVITIES
+// list of activities
+app.get('/activities', Data.getAllActivites);
+// gets parks that feature a specific activity
+app.get('/activities/parks/:activity', Data.getParksByActivity);
+
+// PARKS
+// gets all parks - need to build in query params??
+app.get('/parks', Data.getAllParks);
+// gets parks by stateCode
+app.get('/parks/:state', Data.getParksByState);
+// gets one park
+app.get('/parks/:state/:park', Data.getOnePark);
+
+
+// LODGING
+// gets campgrounds by stateCode
+app.get('/campgrounds/:state', Data.getCampgroundsByState);
+
 
 app.get('/', (request, response) => {
   response.send('Connected to Adventures Back End - Node.js Server');
