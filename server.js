@@ -25,7 +25,7 @@ app.post('/user', Data.createUser);
 // creates a trip
 app.post('/trips', Data.createTrip);
 // gets trips by user
-app.get('/trips/:user', Data.getUserTrips);
+app.get('/trips', Data.getUserTrips);
 
 // ACTIVITIES
 // list of activities

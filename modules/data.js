@@ -13,7 +13,7 @@ const Data = {};
 Data.getUserInfo = async(request, response) => {
   const userEmail = request.query.email;
   const user = await userModel.findOne({ email: userEmail });
-  if (user === null) {
+  if (!user) {
     response.send('user not in DB');
   } else {
     response.status(200).json(user);
@@ -37,22 +37,32 @@ Data.createUser = async(request, response) => {
 };
 
 Data.createTrip = async(request, response) => {
-  console.log('here');
-  console.log('request body: ', request.body);
   const user = request.body.user;
+  const userEmail = request.body.user.email;
   const park = request.body.park;
   const trip = {
     user: user,
+    userEmail: userEmail,
     park: park,
   };
+  console.log('trip', trip);
   const newTrip = new tripModel(trip);
   await newTrip.save();
   response.status(200).send(`New trip to park: ${newTrip.park.name} added for user: ${user.name}`);
 };
 
 Data.getUserTrips = async(request, response) => {
-  console.log('placeholder');
-}
+  console.log('IN TRIPS');
+  const userEmail = request.query.email;
+  console.log('userEmail', userEmail);
+  const trips = await tripModel.find({ userEmail: userEmail });
+  console.log('trips', trips);
+  if (!trips) {
+    response.send('No trips exist for this user');
+  } else {
+    response.status(200).json(trips);
+  };
+};
 
 Data.getAllActivites = async(request, response) => {
   const url = `https://developer.nps.gov/api/v1/activities?api_key=${process.env.NPS_API_KEY}`;
