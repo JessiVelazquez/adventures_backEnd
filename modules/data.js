@@ -45,18 +45,14 @@ Data.createTrip = async(request, response) => {
     userEmail: userEmail,
     park: park,
   };
-  console.log('trip', trip);
   const newTrip = new tripModel(trip);
   await newTrip.save();
   response.status(200).send(`New trip to park: ${newTrip.park.name} added for user: ${user.name}`);
 };
 
 Data.getUserTrips = async(request, response) => {
-  console.log('IN TRIPS');
   const userEmail = request.query.email;
-  console.log('userEmail', userEmail);
   const trips = await tripModel.find({ userEmail: userEmail });
-  console.log('trips', trips);
   if (!trips) {
     response.send('No trips exist for this user');
   } else {
@@ -144,7 +140,6 @@ Data.getCampgroundsByState = async(request, response) => {
 };
 
 Data.getParksByActivity = async(request, response) => {
-  console.log('PARAMS', request.params);
   const activityID = request.params.activity;
   const url = `https://developer.nps.gov/api/v1/activities/parks?id=${activityID}&api_key=${process.env.NPS_API_KEY}`;
   superagent
